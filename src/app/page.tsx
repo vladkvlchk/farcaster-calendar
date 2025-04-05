@@ -1,9 +1,9 @@
 "use client";
 
-import { SignInButton, useProfile } from "@farcaster/auth-kit";
+import { useProfile } from "@farcaster/auth-kit";
 import { Button } from "@/components/ui/button";
 import { sdk } from "@farcaster/frame-sdk";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, LogIn } from "lucide-react";
 import { useState } from "react";
 
 export default function FrameUserInfo() {
@@ -23,19 +23,29 @@ export default function FrameUserInfo() {
     );
   };
 
+  // Function to handle sign-in using sdk
+  const signIn = async () => {
+    try {
+      await sdk.actions.signIn({
+        nonce: Math.random() + "ddf",
+      });
+      console.log("Signed in successfully!");
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
+  };
+
   // Function to handle sharing schedule via SDK and copy text manually
   const shareSchedule = async () => {
     try {
       const scheduleText = generateScheduleText();
 
-      // Optionally, you could use the Frame SDK to compose the cast here.
-      try{
+      try {
         //@ts-ignore
         await sdk.actions.composeCast({
           text: scheduleText,
-          // Optionally include embeds if needed.
         });
-      } catch (e){}
+      } catch (e) {}
 
       // Copy the schedule text to clipboard so user can manually post it
       await navigator.clipboard.writeText(scheduleText);
@@ -51,7 +61,10 @@ export default function FrameUserInfo() {
     return (
       <div className="w-screen h-screen flex flex-col items-center justify-center">
         <div className="text-2xl text-black mb-2">Please sign in</div>
-        <SignInButton />
+        <Button onClick={signIn} className="flex items-center gap-2">
+          <LogIn className="h-4 w-4" />
+          Sign In
+        </Button>
       </div>
     );
 
