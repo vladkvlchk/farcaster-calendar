@@ -37,7 +37,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useParams } from "next/navigation";
 import { CalendarIcon, CheckCircle } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { SignInButton, useProfile } from "@farcaster/auth-kit";
@@ -70,7 +70,7 @@ export default function Page() {
   useEffect(() => {
     const init = async () => {
       // Спочатку чекаємо на готовність SDK
-      await sdk.actions.ready();
+    //   await sdk.actions.ready();
 
       // Потім отримуємо дані користувача
       const response = await fetch(
@@ -123,6 +123,14 @@ export default function Page() {
       setOpenDialog(false);
     }, 3000);
   };
+
+  useLayoutEffect(() => {
+    const init = async () => {
+      await sdk.actions.ready();
+    };
+
+    init();
+  }, []);
 
   if (!user) return <div>Loading...</div>;
 

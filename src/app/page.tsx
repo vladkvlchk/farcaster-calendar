@@ -29,10 +29,13 @@ export default function FrameUserInfo() {
       const scheduleText = generateScheduleText();
 
       // Optionally, you could use the Frame SDK to compose the cast here.
-      // await sdk.actions.composeCast({
-      //   text: scheduleText,
-      //   // Optionally include embeds if needed.
-      // });
+      try{
+        //@ts-ignore
+        await sdk.actions.composeCast({
+          text: scheduleText,
+          // Optionally include embeds if needed.
+        });
+      } catch (e){}
 
       // Copy the schedule text to clipboard so user can manually post it
       await navigator.clipboard.writeText(scheduleText);
