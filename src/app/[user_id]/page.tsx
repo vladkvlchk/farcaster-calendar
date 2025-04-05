@@ -1,5 +1,7 @@
 "use client";
 
+import { sdk } from '@farcaster/frame-sdk'
+ 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -79,6 +81,7 @@ export default function Page() {
       );
       const data = await response.json();
       setUser(data.users[0]);
+      await sdk.actions.ready()
     };
 
     getData();
