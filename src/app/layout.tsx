@@ -37,7 +37,7 @@ export default function RootLayout({
       <head>
         <meta
           name="fc:frame"
-          content='{"version":"next","imageUrl":"https://farcaster-calendar.vercel.app/preview.png","aspectRatio":"3:2","button":{"title":"Book a meet","action":{"type":"launch_frame","name":"Booked!","url":"https://farcaster-calendar.vercel.app","splashImageUrl":"https://farcaster-calendar.vercel.app/logo.png","splashBackgroundColor":"#000"}}}'
+          content='{"version":"next","imageUrl":"https://farcaster-calendar.vercel.app/preview.jpeg","aspectRatio":"3:2","button":{"title":"Book a meet","action":{"type":"launch_frame","name":"Booked!","url":"https://farcaster-calendar.vercel.app","splashImageUrl":"https://farcaster-calendar.vercel.app/logo.png","splashBackgroundColor":"#000"}}}'
         />
       </head>
       <body
