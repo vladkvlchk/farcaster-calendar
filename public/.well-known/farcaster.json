@@ -1,8 +1,8 @@
 {
   "accountAssociation": {
-    "header": "eyJmaWQiOjU1NDA5NSwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDk5YjA2OTBkZmY2NGE3MjQ5MjU0MzU4OTcxYWM4ZDYwYmVhNWM2MjkifQ",
+    "header": "eyJmaWQiOjU1NDA5NSwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDk5QjA2OTBEZmY2NEE3MjQ5MjU0MzU4OTcxYWM4ZDYwYkVBNUM2MjkifQ",
     "payload": "eyJkb21haW4iOiJmYXJjYXN0ZXItY2FsZW5kYXIudmVyY2VsLmFwcCJ9",
-    "signature": ""
+    "signature": "MHhlNjY5ZDFlZWRiYmJhZjg2OGViMTU3MzNiMWJjMDE4YzA0NWY4ZjVmZTViYWU5NDAzZTI3NjQzMWE0YmNkOGE5MGY4Y2Q2OTE3ODZlYjFlODU1NTBjZjFkNjM3MzRiYjEwYjlhNzZhMmU3NDBmMjdlMDM5MjFkNzM1Yzk0N2RmNDFj"
   },
   "frame": {
     "name": "Book it",
