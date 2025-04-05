@@ -9,10 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@farcaster/auth-kit": "^0.6.0",
     "@farcaster/frame-sdk": "^0.0.32",
+    "@reown/appkit": "^1.7.2",
+    "ethers": "^6.13.5",
     "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "viem": "^2.25.0",
+    "wagmi": "^2.14.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
