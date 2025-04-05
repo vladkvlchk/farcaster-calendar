@@ -1,0 +1,18 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjU1NDA5NSwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDk5YjA2OTBkZmY2NGE3MjQ5MjU0MzU4OTcxYWM4ZDYwYmVhNWM2MjkifQ",
+    "payload": "eyJkb21haW4iOiJmYXJjYXN0ZXItY2FsZW5kYXIudmVyY2VsLmFwcCJ9",
+    "signature": ""
+  },
+  "frame": {
+    "name": "Book it",
+    "version": "1",
+    "iconUrl": "https://farcaster-calendar.vercel.app/logo.png",
+    "homeUrl": "https://farcaster-calendar.vercel.app",
+    "imageUrl": "https://farcaster-calendar.vercel.app/image.png",
+    "buttonTitle": "Book a meet",
+    "splashImageUrl": "https://farcaster-calendar.vercel.app/logo.png",
+    "splashBackgroundColor": "#000",
+    "webhookUrl": "https://farcaster-calendar.vercel.app/api/webhook"
+  }
+}
