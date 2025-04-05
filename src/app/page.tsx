@@ -1,16 +1,16 @@
 "use client";
 
-import { useProfile } from "@farcaster/auth-kit";
+import { SignInButton, useProfile } from "@farcaster/auth-kit";
 import { Button } from "@/components/ui/button";
 import { sdk } from "@farcaster/frame-sdk";
-import { CalendarDays, LogIn } from "lucide-react";
-import { useState } from "react";
+import { CalendarDays } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function FrameUserInfo() {
   const { isAuthenticated, profile } = useProfile();
-  const [copySuccess, setCopySuccess] = useState<string>("");
+  const [copySuccess, setCopySuccess] = useState("");
+  const [signInFailed, setSignInFailed] = useState(false);
 
-  // Function to generate schedule text
   const generateScheduleText = (): string => {
     return (
       `📅 Check out my availability for meetings and calls!\n\n` +
@@ -23,34 +23,30 @@ export default function FrameUserInfo() {
     );
   };
 
-  // Function to handle sign-in using sdk
   const signIn = async () => {
     try {
+      if (!sdk?.actions?.signIn) {
+        throw new Error("signIn action is not available in sdk");
+      }
       await sdk.actions.signIn({
-        nonce: Math.random() + "ddf",
+        nonce: Math.floor(Math.random() * 10000000) + "ddf",
       });
       console.log("Signed in successfully!");
     } catch (error) {
       console.error("Error signing in:", error);
+      setSignInFailed(true);
     }
   };
 
-  // Function to handle sharing schedule via SDK and copy text manually
   const shareSchedule = async () => {
     try {
       const scheduleText = generateScheduleText();
-
       try {
         //@ts-ignore
-        await sdk.actions.composeCast({
-          text: scheduleText,
-        });
+        await sdk.actions.composeCast({ text: scheduleText });
       } catch (e) {}
-
-      // Copy the schedule text to clipboard so user can manually post it
       await navigator.clipboard.writeText(scheduleText);
       setCopySuccess("Schedule text copied to clipboard!");
-      console.log("Schedule text copied successfully!");
     } catch (error) {
       console.error("Error sharing schedule:", error);
       setCopySuccess("Failed to copy schedule text.");
@@ -61,10 +57,11 @@ export default function FrameUserInfo() {
     return (
       <div className="w-screen h-screen flex flex-col items-center justify-center">
         <div className="text-2xl text-black mb-2">Please sign in</div>
-        <Button onClick={signIn} className="flex items-center gap-2">
-          <LogIn className="h-4 w-4" />
-          Sign In
-        </Button>
+        {!signInFailed ? (
+          <Button onClick={signIn}>Sign in with Farcaster</Button>
+        ) : (
+          <SignInButton />
+        )}
       </div>
     );
 
