@@ -4,11 +4,30 @@ import { SignInButton, useProfile } from "@farcaster/auth-kit";
 import { Button } from "@/components/ui/button";
 import { sdk } from "@farcaster/frame-sdk";
 import { CalendarDays } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function FrameUserInfo() {
   const { isAuthenticated, profile } = useProfile();
+  const [userProfile, setUserProfile] = useState<any>(profile);
   const [copySuccess, setCopySuccess] = useState<string>("");
+
+  // Fetch user profile if inside Warpcast
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const fcContext = await sdk.context; // Corrected API call
+        if (fcContext?.user) {
+          setUserProfile(fcContext.user);
+        }
+      } catch (error) {
+        console.error("Error fetching Farcaster profile:", error);
+      }
+    };
+
+    if (!isAuthenticated && !userProfile) {
+      fetchProfile();
+    }
+  }, [isAuthenticated, userProfile]);
 
   // Function to generate schedule text
   const generateScheduleText = (): string => {
@@ -19,7 +38,7 @@ export default function FrameUserInfo() {
       `Wednesday: 10AM - 3PM\n` +
       `Thursday: 1PM - 4PM\n` +
       `Friday: 9AM - 1PM\n\n` +
-      `Book a slot at https://farcaster-calendar.vercel.app/${profile?.fid}`
+      `Book a slot at https://farcaster-calendar.vercel.app/${userProfile?.fid}`
     );
   };
 
@@ -28,16 +47,13 @@ export default function FrameUserInfo() {
     try {
       const scheduleText = generateScheduleText();
 
-      // Optionally, you could use the Frame SDK to compose the cast here.
-      try{
+      try {
         //@ts-ignore
         await sdk.actions.composeCast({
           text: scheduleText,
-          // Optionally include embeds if needed.
         });
-      } catch (e){}
+      } catch (e) {}
 
-      // Copy the schedule text to clipboard so user can manually post it
       await navigator.clipboard.writeText(scheduleText);
       setCopySuccess("Schedule text copied to clipboard!");
       console.log("Schedule text copied successfully!");
@@ -47,7 +63,7 @@ export default function FrameUserInfo() {
     }
   };
 
-  if (!isAuthenticated)
+  if (!isAuthenticated && !userProfile)
     return (
       <div className="w-screen h-screen flex flex-col items-center justify-center">
         <div className="text-2xl text-black mb-2">Please sign in</div>
