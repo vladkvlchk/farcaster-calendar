@@ -34,6 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="fc:frame"
+          content='{"version":"next","imageUrl":"https://farcaster-calendar.vercel.app/preview.png","aspectRatio":"3:2","button":{"title":"Book a meet","action":{"type":"launch_frame","name":"Booked!","url":"https://farcaster-calendar.vercel.app","splashImageUrl":"https://farcaster-calendar.vercel.app/logo.png","splashBackgroundColor":"#000"}}}'
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-100`}
       >
