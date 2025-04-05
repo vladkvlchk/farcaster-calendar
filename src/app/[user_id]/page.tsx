@@ -1,7 +1,7 @@
 "use client";
 
-import { sdk } from '@farcaster/frame-sdk'
- 
+import { sdk } from "@farcaster/frame-sdk";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -68,7 +68,11 @@ export default function Page() {
   ];
 
   useEffect(() => {
-    const getData = async () => {
+    const init = async () => {
+      // Спочатку чекаємо на готовність SDK
+      await sdk.actions.ready();
+
+      // Потім отримуємо дані користувача
       const response = await fetch(
         `https://api.neynar.com/v2/farcaster/user/bulk?fids=${user_id}`,
         {
@@ -81,10 +85,9 @@ export default function Page() {
       );
       const data = await response.json();
       setUser(data.users[0]);
-      await sdk.actions.ready()
     };
 
-    getData();
+    init();
   }, [user_id]);
 
   useEffect(() => {
