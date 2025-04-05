@@ -3,22 +3,28 @@
 import { SignInButton, useProfile } from "@farcaster/auth-kit";
 
 export default function FrameUserInfo() {
-  const {
-    isAuthenticated,
-    profile: { username, fid },
-  } = useProfile();
+  const { isAuthenticated, profile } = useProfile();
+
+  console.log(profile);
 
   return (
     <div>
-      <SignInButton />
-      <div>
-        {isAuthenticated ? (
-          <p>
-            Hello {username} Your fid is {fid}
-          </p>
-        ) : (
-          <p>Youre not signed in</p>
-        )}
+      {!isAuthenticated && (
+        <div className="w-screen h-screen flex flex-col items-center justify-center">
+          <div className="text-2xl text-black mb-2">Please sign in</div>
+          <SignInButton />
+        </div>
+      )}
+      <div className="w-screen h-screen flex items-center justify-center">
+        <div className="">
+          {isAuthenticated ? (
+            <p>
+              Hello {profile.username}! Your fid is {profile.fid}
+            </p>
+          ) : (
+            <p>You're not signed in</p>
+          )}
+        </div>
       </div>
     </div>
   );
