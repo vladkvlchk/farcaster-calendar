@@ -21,17 +21,17 @@
     "@reown/appkit": "^1.7.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "date-fns": "^3.6.0",
     "ethers": "^6.13.5",
     "lucide-react": "^0.487.0",
     "next": "15.1.6",
-    "react": "^18.3.1",
+    "react": "^19.0.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.1.0",
     "tailwindcss-animate": "^1.0.7",
     "viem": "^2.25.0",
-    "wagmi": "^2.14.16"
+    "wagmi": "^2.14.16",
+    "date-fns": "^3.6.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
