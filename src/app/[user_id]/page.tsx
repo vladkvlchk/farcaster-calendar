@@ -211,7 +211,7 @@ export default function Page() {
               <div>
                 <h3 className="font-medium">Cost</h3>
                 <p className="text-sm text-muted-foreground">
-                  First consultation costs <b>50 casts</b>
+                  First consultation costs <b>50 warps</b>
                 </p>
               </div>
             </div>
