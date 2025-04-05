@@ -1,10 +1,11 @@
 "use client";
 
-import type { Metadata } from "next";
+import { sdk } from "@farcaster/frame-sdk";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@farcaster/auth-kit/styles.css";
 import { AuthKitProvider } from "@farcaster/auth-kit";
+import { useEffect } from "react";
 
 const config = {
   rpcUrl: "https://mainnet.optimism.io",
@@ -32,6 +33,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  useEffect(() => {
+    sdk.actions.ready();
+  }, []);
+
   return (
     <html lang="en">
       <head>
