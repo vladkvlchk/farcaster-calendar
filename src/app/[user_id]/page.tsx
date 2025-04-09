@@ -133,6 +133,21 @@ export default function Page() {
             property="og:url"
             content={`https://farcaster-calendar.vercel.app/${user_id}`}
           />
+          <meta name="description" content="Commit Protocol is an accountability protocol designed to incentivize participants to join and commit to various activities such as showing up at events, fitness challenges, product milestones, and more." />
+          <meta name="format-detection" content="telephone=no, address=no, email=no" />
+          <meta property="og:description" content="Commit Protocol is an accountability protocol designed to incentivize participants to join and commit to various activities such as showing up at events, fitness challenges, product milestones, and more." />
+          {/* <meta property="og:url" content="https://www.commit.wtf" /> */}
+          <meta property="og:site_name" content="Commit" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:image:alt" content="Commit App" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image" content="https://www.commit.wtf/opengraph-image?b0d19ff294b491d0" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:type" content="website" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+          <meta name="next-size-adjust" content="" />
+
           {/* <meta
             property="og:image"
             content={`https://farcaster-calendar.vercel.app/api/image/${user_id}`}
