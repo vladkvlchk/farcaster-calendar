@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
 
   useEffect(() => {
-    sdk.actions.ready();
+    sdk.actions.ready({ disableNativeGestures: true });
   }, []);
 
   return (
