@@ -1,5 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import { useParams } from "next/navigation";
+import { SignInButton, useProfile } from "@farcaster/auth-kit";
+import { format } from "date-fns";
+import { CalendarIcon, CheckCircle } from "lucide-react";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -33,13 +40,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { useParams } from "next/navigation";
-import { CalendarIcon, CheckCircle } from "lucide-react";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { SignInButton, useProfile } from "@farcaster/auth-kit";
-import Head from "next/head";
 
 export default function Page() {
   const { isAuthenticated, profile } = useProfile();
@@ -132,11 +133,11 @@ export default function Page() {
             property="og:url"
             content={`https://farcaster-calendar.vercel.app/${user_id}`}
           />
-          <meta
+          {/* <meta
             property="og:image"
             content={`https://farcaster-calendar.vercel.app/api/image/${user_id}`}
-          />
-          <meta property="og:title" content={`Book it - Meeting #${user_id}`} />
+          /> */}
+          {/* <meta property="og:title" content={`Book it - Meeting #${user_id}`} /> */}
           <meta
             property="og:description"
             content="Schedule a meeting using Farcaster Calendar"
@@ -156,11 +157,11 @@ export default function Page() {
           property="og:url"
           content={`https://farcaster-calendar.vercel.app/${user_id}`}
         />
-        <meta
+        {/* <meta
           property="og:image"
           content={`https://farcaster-calendar.vercel.app/api/image/${user_id}`}
-        />
-        <meta property="og:title" content={`Book it - Meeting #${user_id}`} />
+        /> */}
+        {/* <meta property="og:title" content={`Book it - Meeting #${user_id}`} /> */}
         <meta
           property="og:description"
           content="Schedule a meeting using Farcaster Calendar"
